@@ -23,7 +23,7 @@ public class Visuma extends javax.swing.JFrame {
 
     int j = 1;
     private Robot rt;
-    int[] ft = new int[12];
+    int[] ln = new int[12];
 //    Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
 //    int ver = sSize.height;
 //    int hor = sSize.width;       
@@ -41,20 +41,20 @@ public class Visuma extends javax.swing.JFrame {
         initComponents();
 //        str.setLocation(X, Y);
         
-        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\subqwerty\\Desktop\\урок.txt")))
+        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Visuma\\урок.txt")))
         {
             String s;
             int i = 0;
             while((s=br.readLine())!=null){
-                ft[i] = Integer.valueOf(s);
-                //System.out.println(ft[i]);
+                ln[i] = Integer.valueOf(s);
+                //System.out.println(ln[i]);
                 i++;
             }
         }
          catch(IOException ex){
             System.out.println(ex.getMessage());
         }
-        btn.setLocation(ft[0], ft[1]);
+        btn.setLocation(ln[0], ln[1]);
         //btn.setVisible(false);
        
         
@@ -139,14 +139,14 @@ public class Visuma extends javax.swing.JFrame {
            rt.mousePress(BUTTON1_MASK);
            rt.mouseRelease(BUTTON1_MASK);
            this.setVisible(true);
-           btn.setLocation(ft[4], ft[5]);
+           btn.setLocation(ln[4], ln[5]);
         }
         if(j==2){
            this.setVisible(false);
            rt.mousePress(BUTTON1_MASK);
            rt.mouseRelease(BUTTON1_MASK);
            this.setVisible(true);
-           btn.setLocation(ft[9], ft[10]);
+           btn.setLocation(ln[9], ln[10]);
         }
         if(j==3){
             this.setVisible(false);
@@ -160,15 +160,15 @@ public class Visuma extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActionPerformed
 
     
-    int a=ft[2]-ft[0];
-    int b=ft[3]-ft[1];
-    Dimension btnSize1 = new Dimension(ft[0],ft[1]);
+    int a=ln[2]-ln[0];
+    int b=ln[3]-ln[1];
+    Dimension btnSize1 = new Dimension(ln[0],ln[1]);
     
     private void strActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strActionPerformed
          System.out.println(a);
         System.out.println(b);
-        System.out.println(ft[1]);
-        System.out.println(ft[0]);
+        System.out.println(ln[1]);
+        System.out.println(ln[0]);
         
         
        
@@ -177,7 +177,7 @@ public class Visuma extends javax.swing.JFrame {
        // btn.setVisible(true);
        
         btn.setSize(btnSize1);
-        btn.setLocation(ft[0], ft[1]);
+        btn.setLocation(ln[0], ln[1]);
         
         //str.setVisible(false);
         btn.setText("1");
