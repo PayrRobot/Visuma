@@ -6,6 +6,7 @@
 package mainpackage;
 
 import java.awt.AWTException;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -21,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class Visuma extends javax.swing.JFrame {
 
-    int j = 1;
+    int j = 0;
     private Robot rt;
     String LesName;
     int[] ln = new int[12];
@@ -66,12 +67,6 @@ public class Visuma extends javax.swing.JFrame {
          catch(IOException ex){
             System.out.println(ex.getMessage());
         }
-        JOptionPane.showMessageDialog(this, "Вы запустили урок \""+LesName+"\"",
-            "Начало", JOptionPane.WARNING_MESSAGE);
-        this.setVisible(false);
-        this.setVisible(true);
-        btn.setSize(ln[2]-ln[0], ln[3]-ln[1]);
-        btn.setLocation(ln[0], ln[1]);
     }
     
     
@@ -92,7 +87,9 @@ public class Visuma extends javax.swing.JFrame {
         setUndecorated(true);
         setOpacity(0.5F);
 
-        btn.setBackground(new java.awt.Color(204, 0, 51));
+        btn.setBackground(new java.awt.Color(51, 51, 255));
+        btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn.setToolTipText("");
         btn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn.setMaximumSize(new java.awt.Dimension(100000, 10000));
         btn.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -133,24 +130,34 @@ public class Visuma extends javax.swing.JFrame {
         } 
         catch (AWTException ex) {}
         
+        if(j==0){
+            System.out.println("Кнопка Старт");
+            JOptionPane.showMessageDialog(this, "Вы запустили урок \""+LesName+"\"",
+            "Начало", JOptionPane.WARNING_MESSAGE);
+            btn.setSize(ln[6]-ln[4], ln[7]-ln[5]);
+            btn.setLocation(ln[4], ln[5]);
+            btn.setBackground(Color.red);
+        }
         if(j==1){
-           this.setVisible(false);
-           rt.mousePress(BUTTON1_MASK);
-           rt.mouseRelease(BUTTON1_MASK);
-           this.setVisible(true);
-           btn.setSize(ln[6]-ln[4], ln[7]-ln[5]);
-           btn.setLocation(ln[4], ln[5]);
-           
+            System.out.println("Кнопка 1");
+            this.setVisible(false);
+            rt.mousePress(BUTTON1_MASK);
+            rt.mouseRelease(BUTTON1_MASK);
+            this.setVisible(true);
+            btn.setSize(ln[6]-ln[4], ln[7]-ln[5]);
+            btn.setLocation(ln[4], ln[5]);
         }
         if(j==2){
-           this.setVisible(false);
-           rt.mousePress(BUTTON1_MASK);
-           rt.mouseRelease(BUTTON1_MASK);
-           this.setVisible(true);
-           btn.setSize(ln[10]-ln[8], ln[11]-ln[9]);
-           btn.setLocation(ln[8], ln[9]);
+            System.out.println("Кнопка 2");
+            this.setVisible(false);
+            rt.mousePress(BUTTON1_MASK);
+            rt.mouseRelease(BUTTON1_MASK);
+            this.setVisible(true);
+            btn.setSize(ln[10]-ln[8], ln[11]-ln[9]);
+            btn.setLocation(ln[8], ln[9]);
         }
         if(j==3){
+            System.out.println("Кнопка 3 (последняя)");
             this.setVisible(false);
             rt.mousePress(BUTTON1_MASK);
             rt.mouseRelease(BUTTON1_MASK);
