@@ -33,9 +33,9 @@ public class Visuma extends javax.swing.JFrame {
 //    int Y = hor / 2;
     
     
-    Dimension btnSize2 = new Dimension(50,50);
-    Dimension btnSize3 = new Dimension(50,50);
-     
+    //Dimension btnSize2 = new Dimension(50,50);
+    //Dimension btnSize3 = new Dimension(50,50);
+    
     /**
      * Creates new form Visuma
      */
@@ -66,8 +66,12 @@ public class Visuma extends javax.swing.JFrame {
          catch(IOException ex){
             System.out.println(ex.getMessage());
         }
+        JOptionPane.showMessageDialog(this, "Вы запустили урок \""+LesName+"\"",
+            "Начало", JOptionPane.WARNING_MESSAGE);
+        this.setVisible(false);
+        this.setVisible(true);
+        btn.setSize(ln[2]-ln[0], ln[3]-ln[1]);
         btn.setLocation(ln[0], ln[1]);
-        btn.setVisible(false);
     }
     
     
@@ -81,7 +85,6 @@ public class Visuma extends javax.swing.JFrame {
     private void initComponents() {
 
         btn = new javax.swing.JButton();
-        str = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -100,37 +103,24 @@ public class Visuma extends javax.swing.JFrame {
             }
         });
 
-        str.setBackground(new java.awt.Color(0, 0, 255));
-        str.setText("Начать урок");
-        str.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                strActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 721, Short.MAX_VALUE))
+            .addGap(0, 821, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(str)
+                    .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+            .addGap(0, 296, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(str)
+                    .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -144,18 +134,21 @@ public class Visuma extends javax.swing.JFrame {
         catch (AWTException ex) {}
         
         if(j==1){
-            this.setVisible(false);
+           this.setVisible(false);
            rt.mousePress(BUTTON1_MASK);
            rt.mouseRelease(BUTTON1_MASK);
            this.setVisible(true);
+           btn.setSize(ln[6]-ln[4], ln[7]-ln[5]);
            btn.setLocation(ln[4], ln[5]);
+           
         }
         if(j==2){
            this.setVisible(false);
            rt.mousePress(BUTTON1_MASK);
            rt.mouseRelease(BUTTON1_MASK);
            this.setVisible(true);
-           btn.setLocation(ln[9], ln[10]);
+           btn.setSize(ln[10]-ln[8], ln[11]-ln[9]);
+           btn.setLocation(ln[8], ln[9]);
         }
         if(j==3){
             this.setVisible(false);
@@ -169,30 +162,6 @@ public class Visuma extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActionPerformed
 
     
-    int a=ln[2]-ln[0];
-    int b=ln[3]-ln[1];
-    Dimension btnSize1 = new Dimension(ln[0],ln[1]);
-    
-    private void strActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strActionPerformed
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(ln[1]);
-        System.out.println(ln[0]);
-        
-        
-       
-        JOptionPane.showMessageDialog(this, "Вы запустили урок \""+LesName+"\"",
-                  "Начало", JOptionPane.WARNING_MESSAGE);
-        btn.setVisible(true);
-       
-        btn.setSize(btnSize1);
-        btn.setLocation(ln[0], ln[1]);
-        
-        str.setVisible(false);
-        btn.setText("1");
-        
-    }//GEN-LAST:event_strActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -230,6 +199,5 @@ public class Visuma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn;
-    private javax.swing.JButton str;
     // End of variables declaration//GEN-END:variables
 }
