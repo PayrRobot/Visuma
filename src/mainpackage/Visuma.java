@@ -23,10 +23,12 @@ public class Visuma extends javax.swing.JFrame {
 
     int j = 1;
     private Robot rt;
+    String LesName;
     int[] ln = new int[12];
-//    Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
-//    int ver = sSize.height;
-//    int hor = sSize.width;       
+    Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int ver = sSize.height;
+    int hor = sSize.width;
+    String SIZE = Integer.toString(hor)+"x"+Integer.toString(ver);
 //    int X = ver / 2;
 //    int Y = hor / 2;
     
@@ -43,11 +45,21 @@ public class Visuma extends javax.swing.JFrame {
         
         try(BufferedReader br = new BufferedReader(new FileReader("C:\\Visuma\\урок.txt")))
         {
+            System.out.println(SIZE);
+            LesName = br.readLine();
             String s;
+            if(SIZE.equals(br.readLine())){    
+            JOptionPane.showMessageDialog(this, "Проверка на разрешение пройдена",
+                        "Урок совместим", JOptionPane.WARNING_MESSAGE);
+            }
+            else{ JOptionPane.showMessageDialog(this, "Разрешение экрана не соотвецтвует заданому в уроке",
+                        "Не совместимость", JOptionPane.WARNING_MESSAGE);
+                System.exit(0);
+            }
             int i = 0;
             while((s=br.readLine())!=null){
                 ln[i] = Integer.valueOf(s);
-                //System.out.println(ln[i]);
+                System.out.println(ln[i]);
                 i++;
             }
         }
@@ -55,11 +67,7 @@ public class Visuma extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
         btn.setLocation(ln[0], ln[1]);
-        //btn.setVisible(false);
-       
-        
-        
-        
+        btn.setVisible(false);
     }
     
     
@@ -76,6 +84,7 @@ public class Visuma extends javax.swing.JFrame {
         str = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setExtendedState(MAXIMIZED_BOTH);
         setUndecorated(true);
         setOpacity(0.5F);
@@ -165,21 +174,21 @@ public class Visuma extends javax.swing.JFrame {
     Dimension btnSize1 = new Dimension(ln[0],ln[1]);
     
     private void strActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strActionPerformed
-         System.out.println(a);
+        System.out.println(a);
         System.out.println(b);
         System.out.println(ln[1]);
         System.out.println(ln[0]);
         
         
        
-//        JOptionPane.showMessageDialog(this, "Вы запустили урок \"Word\"",
-//                  "Начало", JOptionPane.WARNING_MESSAGE);
-       // btn.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Вы запустили урок \""+LesName+"\"",
+                  "Начало", JOptionPane.WARNING_MESSAGE);
+        btn.setVisible(true);
        
         btn.setSize(btnSize1);
         btn.setLocation(ln[0], ln[1]);
         
-        //str.setVisible(false);
+        str.setVisible(false);
         btn.setText("1");
         
     }//GEN-LAST:event_strActionPerformed
